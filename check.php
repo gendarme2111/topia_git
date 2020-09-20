@@ -3,7 +3,6 @@ session_start();
 require_once("userlogic.php");
 
 $token = filter_input(INPUT_POST,'csrf_token');
-//トークンがない、またはトークンが一致しない場合、処理を中止
 if(!isset($_SESSION['csrf_token'])||$token !== $_SESSION['csrf_token']){
     exit('不正なリクエストです');
 }
@@ -53,11 +52,11 @@ $_SESSION['csrf_token_conf'] = $_SESSION['csrf_token'];
 					<p>お好きなトッピング（複数選択可)</p>
 						<ul>
 							<span>
-								<?php if(isset($_POST['topping'])): ?>
+								<?php if(isset($_POST['topping'])): ?> <!--もしトッピングが1以上選択されpostされたなら-->
 								<?php foreach($_POST['topping'] as $topping): ?>
 									<li><?php echo h($topping) ?></li>
 								<?php endforeach; ?> 
-								<?php else: ?>
+								<?php else: ?> <!--もしトッピングが1つも選択されずpostされてきたら-->
 								<li>選択なし</li>
 								<?php endif; ?>
 							</span> 
@@ -66,8 +65,8 @@ $_SESSION['csrf_token_conf'] = $_SESSION['csrf_token'];
 						<p><span><?php echo h($_POST['impression']) ?></span></p>
 					<p>
 						<div class="btn">
-							<input type="submit" value="確定" onclick="location.href='finish.php'">
-							<input type="button" value="修正" onclick="history.back();">
+							<input type="submit" value="確定" onclick="location.href='finish.php'"> <!--finish.phpに推移する-->
+							<input type="button" value="修正" onclick="history.back();"> <!--index.phpに戻る-->
 						</div>
 					</p>
 				</div>
