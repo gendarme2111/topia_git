@@ -41,7 +41,7 @@ $_SESSION['csrf_token_conf'] = $_SESSION['csrf_token'];
 		<fieldset>
 			<legend>入力確認</legend>
 				<div class="wrapper">
-					<p><?php echo h($_POST['my_name']) ?>様</p>
+					<p><?php echo h($_POST['my_name']) ?>様</p> <!--エスケープ処理はuserlogic.phpでメソッド化したのでh()で囲うだけでok-->
 					<p>登録内容は下記でよろしいでしょうか？</p>
 					<p>氏名:<span><?php echo h($_POST['my_name']) ?></span></p>
 					<p>性別:<span><?php echo h($_POST['gender']) ?></span></p>
