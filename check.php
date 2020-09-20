@@ -47,7 +47,8 @@ $_SESSION['csrf_token_conf'] = $_SESSION['csrf_token'];
 					<p>性別:<span><?php echo h($_POST['gender']) ?></span></p>
 					<p>年齢:<span><?php echo h($_POST['age']) ?>歳</span></p>
 					<p>郵便番号:<span>〒<?php echo h($_POST['zip1'])?>-<?php echo h($_POST['zip2'])?></span></p>
-					<p>Eメールアドレス:<span><?php echo h($_POST['email']) ?></span></p>
+					<p>Eメールアドレス</p>
+					<p><span><?php echo h($_POST['email']) ?></span></p>
 					<p>一番好きなラーメン:<span><?php echo h($_POST['favorite']) ?></span></p>
 					<p>お好きなトッピング（複数選択可)</p>
 						<ul>
