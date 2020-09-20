@@ -1,9 +1,6 @@
 <?php
-//セッションにユーザー情報を格納する
 session_start();
-//userlogic.phpを読み込む
 require_once("userlogic.php");
-//userlogic.phpのsetTokenメソッドを呼び出しセッションにトークンを格納する
 $_SESSION['csrf_token'] = setToken();
 ?>
 
@@ -66,7 +63,7 @@ $_SESSION['csrf_token'] = setToken();
 						</p>
 						<p>	
 							<div class="btn">
-								<input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">//トークンをpost
+								<input type="hidden" name="csrf_token" value="<?php echo setToken(); ?>"> <!--トークンをpost-->
 								<input type="submit" value="送信">
 								<input type="reset" value="取消">
 							</div>
