@@ -1,0 +1,46 @@
+.survey{
+    width:500px;
+    height:550px;
+    margin:0 auto;
+}
+
+legend{
+    text-align: center;
+}
+
+.wrapper{
+    margin:0 auto;
+    width:70%
+}
+
+/* 年齢を選ぶinputタグの矢印（スピンボタン）を消す */
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} 
+/* 必須項目のspanタグの色を赤に替える */
+.comment{
+    color:red;
+}
+span{
+    color:rgb(46, 41, 128);
+}
+.zip1{
+    width:45px;
+}
+.zip2{
+    width:60px;
+}
+.btn{
+    text-align:center;
+}
+
+.text-container{
+    display: flex;
+    justify-content: center;
+    height:60%;
+}
+.text-wrapper{
+    align-self: center;   
+}
