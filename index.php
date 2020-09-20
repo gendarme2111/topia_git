@@ -35,8 +35,8 @@ $_SESSION['csrf_token'] = setToken();
 							</select>歳
 						</p>
 						<p>郵便番号
-							〒<input type="number" class="zip1" name="zip1" min="0" max="999" placeholder="3桁">
-							-<input type="number" class="zip2" name="zip2" min="0" max="9999" placeholder="4桁">
+							〒<input type="number" class="zip1" name="zip1" min="100" max="999" placeholder="3桁">
+							-<input type="number" class="zip2" name="zip2" min="100" max="9999" placeholder="4桁">
 						</p>
 						<p>Eメールアドレス<span class="comment">※</span><br>
 							<input type="email" name="email" size="42" maxlength="255" placeholder="半角で入力してください" required>
