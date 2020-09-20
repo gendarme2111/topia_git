@@ -66,7 +66,7 @@ $_SESSION['csrf_token_conf'] = $_SESSION['csrf_token'];
 						<p><span><?php echo h($_POST['impression']) ?></span></p>
 					<p>
 						<div class="btn">
-							<input type="submit" value="確定" onclick="location.href='finish.php'"> <!--finish.phpに推移する-->
+							<input type="submit" value="確定" onclick="location.href='finish.php'"> <!--finish.phpに移動する-->
 							<input type="button" value="修正" onclick="history.back();"> <!--index.phpに戻る-->
 						</div>
 					</p>
