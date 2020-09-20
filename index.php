@@ -1,6 +1,9 @@
 <?php
+//セッションにユーザー情報を格納する
 session_start();
+//userlogic.phpを読み込む
 require_once("userlogic.php");
+//userlogic.phpのsetTokenメソッドを呼び出しセッションにトークンを格納する
 $_SESSION['csrf_token'] = setToken();
 ?>
 
@@ -12,7 +15,7 @@ $_SESSION['csrf_token'] = setToken();
 <link rel="stylesheet" type="text/css" href="./stylesheet.css">
 </head>
 <body>
-	<article class ="survey">
+	<article class ="survey"> <!--article,fieldset,legendタグ部分は個々でアレンジ可能-->
 		<form action="./check.php" method="post">
 			<fieldset>
 				<legend>ラーメン店アンケート</legend>
@@ -27,9 +30,11 @@ $_SESSION['csrf_token'] = setToken();
 						</p>					
 						<p>年齢
 							<select name="age">
-								<?php for($i=5;$i<=80;$i++): ?>
-								<option value="<?php echo $i ?>"><?php echo $i ?></option>
-								<?php endfor; ?>
+								<?php for($i=5;$i<=80;$i++): ?> <!--//$i=5~80をfor文で回す,for文スタートの宣言-->
+									<option value="<?php echo $i ?>"> <!--value="値"の部分(HP上で見えない部分)に$iを出力-->
+										<?php echo $i ?> <!--optionタグに囲われた部分(HP上に表示される部分)に$iを出力-->
+									</option>
+									<?php endfor; ?> <!--for文終了の宣言-->
 							</select>歳
 						</p>
 						<p>郵便番号
@@ -42,16 +47,18 @@ $_SESSION['csrf_token'] = setToken();
 						<p>一番好きなラーメン
 							<select name="favorite">
 								<?php $ramens =array("醤油ラーメン","塩ラーメン","豚骨ラーメン","味噌ラーメン","煮干しラーメン") ?>
-								<?php foreach($ramens as $ramen): ?>
-									<option value="<?php echo $ramen ?>"><?php echo $ramen ?></option>
-								<?php endforeach; ?>
+								<?php foreach($ramens as $ramen): ?> <!--foreach文スタートの宣言-->
+									<option value="<?php echo $ramen ?>"> <!--配列$ramensの要素を順番にvalue="値"に出力-->
+										<?php echo $ramen ?> <!--配列$ramensの要素を順番にoptionタグ間(HPに表示される部分)に出力-->
+									</option>
+								<?php endforeach; ?> <!--foreach文終了の宣言-->
 							</select>
 						</p>
 						<p>お好きなトッピング（複数選択可）<br>
 							<?php $toppings = array("メンマ","チャーシュー","のり","煮卵");
 							$i =0;?>
 							<?php foreach($toppings as $topping): ?>
-							<label><input type="checkbox" id="'topping_'.<?php echo $i ?>" name="topping[]" value="<?php echo $topping ?>" ><?php echo $topping ?></label>
+							<label><input type="checkbox" name="topping[]" value="<?php echo $topping ?>" ><?php echo $topping ?></label>
 							<?php endforeach; ?>
 						</p>
 						<p>ご意見・ご感想<br>
@@ -59,7 +66,7 @@ $_SESSION['csrf_token'] = setToken();
 						</p>
 						<p>	
 							<div class="btn">
-								<input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">
+								<input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">//トークンをpost
 								<input type="submit" value="送信">
 								<input type="reset" value="取消">
 							</div>
