@@ -1,37 +1,42 @@
+/*一番外枠部分の縦横の幅を指定,"margin:0 auto;"で中央寄せ*/
 .survey{
     width:500px;
     height:550px;
     margin:0 auto;
 }
-
+/*borderに挿入されたテキストを中央寄せ*/
 legend{
     text-align: center;
 }
-
+/*アンケート内容の部分をdiv(箱)で囲い,横幅を.surveyの70%に指定、テキストを崩さないためdiv(箱)ごとを中央寄せ*/
 .wrapper{
     margin:0 auto;
     width:70%
 }
 
-/* 年齢を選ぶinputタグの矢印（スピンボタン）を消す */
+/* 年齢を選ぶinputタグの矢印（スピンボタン）を消す,コピペ */
 input[type="number"]::-webkit-outer-spin-button, 
 input[type="number"]::-webkit-inner-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 } 
-/* 必須項目のspanタグの色を赤に替える */
+/* 必須項目のspanタグで囲われた部分の色を赤に替える */
 .comment{
     color:red;
 }
+/*確認ページのspanタグで囲われた部分の色を青に変える*/
 span{
     color:rgb(46, 41, 128);
 }
+/*郵便番号(左)の横幅
 .zip1{
     width:45px;
+/*郵便番号(右)の横幅
 }
 .zip2{
     width:60px;
 }
+*/ボタンを中央寄せ
 .btn{
     text-align:center;
 }
