@@ -28,10 +28,10 @@ input[type="number"]::-webkit-inner-spin-button {
 span{
     color:rgb(46, 41, 128);
 }
-/*郵便番号(左)の横幅
+/*郵便番号(左)の横幅*/
 .zip1{
     width:45px;
-/*郵便番号(右)の横幅
+/*郵便番号(右)の横幅*/
 }
 .zip2{
     width:60px;
