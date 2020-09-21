@@ -11,13 +11,17 @@ if(!isset($_SESSION['csrf_token_conf'])||$_SESSION['csrf_token_conf'] !== $_SESS
     exit('不正なリクエストです');
 }
 try {
-    //DB名、ユーザー名、パスワード
-    $dsn = 'mysql:dbname=inquire;host=localhost';
-    $user = 'root';
-    $password = '';
-
-    $PDO = new PDO($dsn, $user, $password); //MySQLのデータベースに接続
-    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //PDOのエラーレポートを表示
+      $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
+      $db['heroku_cf43bda6038c08b'] = ltrim($db['path'], '/');
+      $dsn = "mysql:host={$db['us-cdbr-east-02.cleardb.com']};dbname={$db['heroku_cf43bda6038c08b']};charset=utf8";
+      $user = $db['bc6d1261e5b941'];
+      $password = $db['faf22e0e'];
+      $options = array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY =>true,
+      );
+      $PDO = new PDO($dsn,$user,$password,$options);
 
     //$_SESSIONの値を取得
     $name = $_SESSION['my_name'];
@@ -28,7 +32,7 @@ try {
     $favorite = $_SESSION['favorite'];
     $toppings = $_SESSION['toppings'];
     $impression = $_SESSION['impression'];
-    
+
     $sql = "INSERT INTO topia_ramen(name,gender,age,zip,email,favorite,toppings,impression)
     VALUES (:name, :gender,:age,:zip,:email,:favorite,:toppings,:impression)"; // INSERT文を変数に格納。:nameはプレースホルダという、値を入れるための単なる空箱
     $stmt = $PDO->prepare($sql); //挿入する値は空のまま、SQL実行の準備をする
@@ -37,10 +41,10 @@ try {
     $stmt->execute($params); //挿入する値が入った変数をexecuteにセットしてSQLを実行
 
     $message ='ご投稿ありがとうございました'; // 登録完了のメッセージ
-    
+
     $_SESSION = array();
     session_destroy();
-  
+
 } catch (PDOException $e) {
     $_SESSION = array();
     session_destroy();
