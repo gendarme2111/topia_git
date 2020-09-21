@@ -12,7 +12,7 @@ if(!isset($_SESSION['csrf_token_conf'])||$_SESSION['csrf_token_conf'] !== $_SESS
 }
 try {     
     //DB名、ユーザー名、パスワード
-    $dsn = 'mysql:dbname=heroku_cf43bda6038c08b;host=us-cdbr-east-02.cleardb.com,charset=utf8';
+    $dsn = 'mysql:dbname=heroku_cf43bda6038c08b;host=us-cdbr-east-02.cleardb.com;charset=utf8';
     $user = 'bc6d1261e5b941';
     $password = 'faf22e0e';
 
