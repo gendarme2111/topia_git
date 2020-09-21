@@ -12,7 +12,7 @@ if(!isset($_SESSION['csrf_token_conf'])||$_SESSION['csrf_token_conf'] !== $_SESS
 }
 try {
       $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
-      $db['heroku_cf43bda6038c08b'] = ltrim($db['path'], '/');
+      $db['dbname'] = ltrim($db['path'], '/');
       $dsn = "mysql:host={$db['us-cdbr-east-02.cleardb.com']};dbname={$db['heroku_cf43bda6038c08b']};charset=utf8";
       $user = $db['bc6d1261e5b941'];
       $password = $db['faf22e0e'];
