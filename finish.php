@@ -10,19 +10,15 @@ if(!isset($_SESSION['csrf_token_conf'])||$_SESSION['csrf_token_conf'] !== $_SESS
     session_destroy();
     exit('不正なリクエストです');
 }
-try {
-      $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
-      $db['dbname'] = ltrim($db['path'], '/');
-      $dsn = "mysql:host={$db['us-cdbr-east-02.cleardb.com']};dbname={$db['heroku_cf43bda6038c08b']};charset=utf8";
-      $user = $db['bc6d1261e5b941'];
-      $password = $db['faf22e0e'];
-      $options = array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::MYSQL_ATTR_USE_BUFFERED_QUERY =>true,
-      );
-      $PDO = new PDO($dsn,$user,$password,$options);
+try {     
+    //DB名、ユーザー名、パスワード
+    $dsn = 'mysql:dbname=heroku_cf43bda6038c08b;host=us-cdbr-east-02.cleardb.com';
+    $user = 'bc6d1261e5b941';
+    $password = 'faf22e0e';
 
+    $PDO = new PDO($dsn, $user, $password); //MySQLのデータベースに接続
+    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //PDOのエラーレポートを表示
+    
     //$_SESSIONの値を取得
     $name = $_SESSION['my_name'];
     $gender = $_SESSION['gender'];
