@@ -17,6 +17,7 @@ try {
     $password = 'faf22e0e';
 
     $PDO = new PDO($dsn, $user, $password); //MySQLのデータベースに接続
+    $PDO->set_charset('utf8')
     $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //PDOのエラーレポートを表示
     
     //$_SESSIONの値を取得
