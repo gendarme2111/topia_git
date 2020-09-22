@@ -63,7 +63,7 @@ $_SESSION['csrf_token_conf'] = $_SESSION['csrf_token'];
 							</span> 
 						</ul>
 					<p>ご意見・ご感想</p>
-						<p><span><?php echo h($_POST['impression']) ?></span></p>
+						<p><span><?php echo nl2br(h($_POST['impression'])) ?></span></p> <!--改行-->
 					<p>
 						<div class="btn">
 							<input type="submit" value="確定" onclick="location.href='finish.php'"> <!--finish.phpに移動する-->
